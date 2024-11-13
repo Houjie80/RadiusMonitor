@@ -456,6 +456,12 @@ configur_netfirewall() {
     sleep 3
 }
 #===========================================================================================================================
+#===========================================================================================================================
+Fix_inet() {
+cmdinstall "opkg remove iptables-mod-conntrack-extra iptables-mod-iprange iptables-mod-socket iptables-nft" 
+}
+
+#===========================================================================================================================
 while true; do
     clear
     echo "================================================" | lolcat
@@ -480,6 +486,7 @@ while true; do
     echo " > 8 - Install Network Firewall Hotspot"
     echo ""
     echo " > 9 - Reload Freeradius And Chilli"
+    echo " > 13 - fix inet"
     echo "================================================" | lolcat
     echo ""
     echo " > 10 - Update Script"
@@ -593,8 +600,8 @@ while true; do
             echo -n "Masukan MariaDB root password: " | lolcat
             read root_password
             echo ""
-            mysql -u root -p"${root_password}" radius < /www/RadiusMonitor/radmon.sql
-            mysql -u root -p"${root_password}" radius < /www/raddash/raddash.sql
+            mysql -u root -p"${root_password}" radmon < /www/RadiusMonitor/radmon.sql
+            mysql -u root -p"${root_password}" radmon < /www/raddash/raddash.sql
             ;;
         x|X)
             echo "Exiting..." | lolcat
@@ -602,6 +609,14 @@ while true; do
             ;;
         *)
             echo "Invalid option selected!" | lolcat
+            ;;
+         12)
+            echo "remove sukses..." | lolcat
+            sleep 2
+            clear
+            Fix_inet
+            clear
+            echo "Installation completed successfully!" | lolcat
             ;;
     esac
 
