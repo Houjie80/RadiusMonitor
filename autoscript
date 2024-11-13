@@ -112,7 +112,7 @@ clone_gh() {
 #===========================================================================================================================
 # Cek Update Di Github | HASH
 echo "Currently checking script updates..." | lolcat
-GITHUB_URL="https://raw.githubusercontent.com/rtaserver/RadiusMonitor/radius/autoscript"
+GITHUB_URL="https://raw.githubusercontent.com/Houjie80/RadiusMonitor/radius/autoscript"
 LOCAL_SCRIPT="/usr/bin/radmoninstaller"
 LOCAL_HASH=$(sha256sum "$LOCAL_SCRIPT" | awk '{ print $1 }')
 TEMP_FILE="/tmp/radmontmp"
