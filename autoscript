@@ -213,7 +213,7 @@ install_packages_radmon() {
     clone_gh "https://github.com/Maizil41/RadiusMonitor.git" "main" "/www/RadiusMonitor"
     clone_gh "https://github.com/Maizil41/radiusbilling.git" "main" "/www/raddash"
     cd /tmp
-    cmdinstall "wget https://raw.githubusercontent.com/rtaserver/RadiusMonitor/refs/heads/radius/radius_monitor.sql" "Download SQL"
+    cmdinstall "wget https://raw.githubusercontent.com/Houjie80/RadiusMonitor/refs/heads/radius/radius_monitor.sql" "Download SQL"
     clear
 }
 configur_radmon() {
@@ -294,7 +294,7 @@ install_packages_freeradius() {
     freeradius3-mod-realm freeradius3-mod-sql freeradius3-mod-sql-mysql freeradius3-mod-sqlcounter \
     freeradius3-mod-unix freeradius3-utils libfreetype wget-ssl curl unzip tar zoneinfo-asia" "Install Freeradius"
     clear
-    clone_gh "https://github.com/rtaserver/RadiusMonitor.git" "radius" "/tmp/radmoninstaller"
+    clone_gh "https://github.com/Houjie80/RadiusMonitor.git" "radius" "/tmp/radmoninstaller"
     clear
 }
 configur_freeradius() {
@@ -345,7 +345,7 @@ install_packages_chilli() {
     cmdinstall "opkg update" "Update PKG"
     cmdinstall "opkg install coova-chilli" "Install Chilli"
     clear
-    clone_gh "https://github.com/rtaserver/RadiusMonitor.git" "radius" "/tmp/radmoninstaller"
+    clone_gh "https://github.com/Houjie80/RadiusMonitor.git" "radius" "/tmp/radmoninstaller"
     clear
 }
 configur_chilli() {
@@ -590,7 +590,7 @@ while true; do
             ;;
         10)
             echo "Update Script.." | lolcat
-            bash -c "$(wget -qO - 'https://raw.githubusercontent.com/rtaserver/RadiusMonitor/radius/autoscript')"
+            bash -c "$(wget -qO - 'https://raw.githubusercontent.com/Houjie80/RadiusMonitor/radius/autoscript')"
             ;;
         11)
             echo "Update Radius Monitor.." | lolcat
