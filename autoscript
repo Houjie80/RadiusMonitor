@@ -204,8 +204,8 @@ DELETE FROM mysql.db WHERE Db='test' OR Db='test_%';
 FLUSH PRIVILEGES;
 EOF
 
-    mysql -u root -p"${root_password}" -e "CREATE DATABASE radius CHARACTER SET utf8";
-    mysql -u root -p"${root_password}" -e "GRANT ALL ON radius.* TO 'radius'@'localhost' IDENTIFIED BY 'radius' WITH GRANT OPTION";
+    mysql -u root -p"${root_password}" -e "CREATE DATABASE "${root_password}" CHARACTER SET utf8";
+    mysql -u root -p"${root_password}" -e "GRANT ALL ON "${root_password}".* TO '${root_password}'@'localhost' IDENTIFIED BY '${root_password}' WITH GRANT OPTION";
 }
 #===========================================================================================================================
 #===========================================================================================================================
