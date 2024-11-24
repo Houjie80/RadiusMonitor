@@ -456,6 +456,16 @@ configur_netfirewall() {
     sleep 3
 }
 #===========================================================================================================================
+install_radmodv2() {
+    cmdinstall "opkg update" "Update PKG"
+    cmdinstall "wget https://raw.githubusercontent.com/Houjie80/RadiusMonitor/refs/heads/radius/radmonv2.zip" "Install radmonv2"
+    clear
+}
+configur_radmonv2() {
+    rm -rf /etc/freeradius3 && rm -rf /etc/config/chilli && rm -rf /etc/init.d/chilli && rm -rf /usr/share/freeradius3
+    cd / unzip -o radmonv2.zip
+    chmod +x /usr/bin/radmon-exec /sbin/sync_time.sh /etc/init.d/chilli /usr/bin/radmon-log /usr/bin/radmon-kuota
+}
 #===========================================================================================================================
 Fix_inet() {
 cmdinstall "opkg remove iptables-mod-conntrack-extra iptables-mod-iprange iptables-mod-socket iptables-nft" 
@@ -487,6 +497,7 @@ while true; do
     echo ""
     echo " > 9 - Reload Freeradius And Chilli"
     echo " > 13 - fix inet"
+    echo " > 14 - install radmonv2"
     echo "================================================" | lolcat
     echo ""
     echo " > 10 - Update Script"
@@ -610,11 +621,20 @@ while true; do
         *)
             echo "Invalid option selected!" | lolcat
             ;;
-         12)
+        13)
             echo "remove sukses..." | lolcat
             sleep 2
             clear
             Fix_inet
+            clear
+            echo "Installation completed successfully!" | lolcat
+            ;;
+         14)
+            echo "Installing radmonv2..." | lolcat
+            sleep 2
+            clear
+            install_radmonv2
+            configur_radmonv2
             clear
             echo "Installation completed successfully!" | lolcat
             ;;
